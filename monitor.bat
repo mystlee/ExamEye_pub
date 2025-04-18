@@ -18,7 +18,7 @@ if %ERRORLEVEL%==0 (
 
 :INSTALL_PACKAGES
 echo [INFO] Installing required Python packages...
-py.exe -m pip install bleak pyperclip pynput pygetwindow psutil
+py.exe -m pip install bleak pyperclip pynput pygetwindow psutil requests
 
 echo [INFO] Running checker.py...
 REM [MODIFY_HERE]
