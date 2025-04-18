@@ -1,0 +1,13 @@
+# personal data
+**/*.csv
+*.db
+git.token
+
+# generated files
+**/*.zip
+*.zip
+**/monitor_*.py
+**/monitor.bat
+
+# main template 
+!/monitor.bat

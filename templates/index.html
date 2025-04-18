@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CSU AISW Exam Monitoring</title>
+        <style>
+            body {
+                font-family: Arial;
+                padding: 40px;
+                max-width: 400px;
+                margin: auto;
+            }
+            input,
+            label {
+                display: block;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+            button {
+                padding: 10px;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Login for Exam</h2>
+        <h4>사용전 학번, 비밀번호, 교과목 코드 등록 필수</h4>
+        <label>학번</label>
+        <input type="text" id="student_id" placeholder="20240001">
+        <label>비밀번호(4자리)</label>
+        <input type="password" id="password" maxlength="4" placeholder="1234">
+        <label>교과목 코드</label>
+        <input type="text" id="subject_code" placeholder="39566-02-mid">
+        <button onclick="login()">Login and Download Script</button>
+
+        <script>
+            function login() {
+                const student_id = document
+                    .getElementById("student_id")
+                    .value;
+                const password = document
+                    .getElementById("password")
+                    .value;
+                const subject_code = document
+                    .getElementById("subject_code")
+                    .value;
+
+                const base = window.location.origin;
+
+                fetch(`${base}/login`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({student_id, password, subject_code})
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            window.location.href = `${base}/download?student_id=${student_id}&subject_code=${subject_code}`;
+                        } else {
+                            alert("로그인 실패");
+                        }
+                    });
+            }
+        </script>
+
+    </body>
+</html>
