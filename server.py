@@ -14,7 +14,7 @@ CORS(app)
 
 PY_SCRIPT_TEMPLATE = "checker.py"
 BATCH_SCRIPT_TEMPLATE = "monitor.bat"
-REMOTE_WEB_IP_ADDRESS = "http://117.16.23.57:7033"
+REMOTE_WEB_IP_ADDRESS = "http://IP+port"
 
 def short_time():
     return datetime.now().strftime("%y%m%d:%H%M%S")
